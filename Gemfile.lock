@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.0.1)
     builder (3.1.4)
     capistrano (3.0.1)
       i18n
@@ -38,16 +39,8 @@ GEM
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
-    capistrano-rvm (0.1.0)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2.0)
-    coffee-rails (4.0.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.6.3)
+    capistrano-rvm (0.0.3)
+      capistrano
     erubis (2.7.0)
     execjs (2.0.2)
     font-awesome-rails (4.0.3.0)
@@ -108,8 +101,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sqlite3 (1.3.8-x64-mingw32)
     sqlite3 (1.3.8-x86-mingw32)
-    sshkit (1.2.0)
+    sshkit (1.3.0)
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
@@ -123,8 +117,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.1.0)
-      coffee-rails
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -134,6 +126,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.0.0)
   capistrano (~> 3.0.0)
   capistrano-bundler
   capistrano-rails (~> 1.1.0)
@@ -147,5 +140,4 @@ DEPENDENCIES
   sdoc
   sqlite3
   therubyracer
-  turbolinks
   uglifier (>= 1.3.0)
