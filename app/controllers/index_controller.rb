@@ -4,16 +4,26 @@ class IndexController < ApplicationController
 		
 	end
 	
+	# Action to register a new user
+	def register
+		user = User.new(post_params)
+		user.save!
+		session[:user_id] = user.id
+		redirect_to write_path
+	rescue => e
+		flash[:error] = e.message
+		redirect_to root_path
+	end
+	
 	# Action to login and forward to expected page
 	def login
-		user = User.find_by_username(@post_params[:username]).try(:authenticate, @post_params[:password])
-		if user
-			session[:user_id] = user.id
-			redirect_to write_path
-		else
-			flash[:error] = "Invalid username or password"
-			redirect_to root_path
-		end
+		user = User.find_by_username(post_params[:username]).try(:authenticate, post_params[:password])
+		raise "Invalid username or password" unless user
+		session[:user_id] = user.id
+		redirect_to write_path
+	rescue => e
+		flash[:error] = e.message
+		redirect_to root_path
 	end
 	
 	# Action to logout and forward to home page

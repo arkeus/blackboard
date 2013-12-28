@@ -1,50 +1,47 @@
+@import "utils";
+
 #login-box {
 	text-align: center;
-	width: 600px;
+	width: 350px;
 	position: absolute;
 	top: 30%;
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -175px;
 	
 	#brand {
-		font-size: 74px;
+		@include unselectable;
+		
+		font-size: 79px;
 		color: #444;
 		font-variant: small-caps;
 		line-height: 70px;
 	}
 	
-	#login-form {
-		input, button {
-			border: 0;
-			background: transparent;
-			color: #eee;
-			
-			&:hover {
-				color: #ff8000;
-			}
-			
-			&:focus {
-				outline: none;
-				color: #ff0000;
-			}
-			
-			&:active {
-				color: #00ffff;
-			}
-		}
-		
-		input {
-			border-bottom: 1px solid #aaa;
-			width: 100px;
-		}
-		
+	#errors {
+		color: #f00;
+		font-size: 12px;
+	}
+	
+	#login-form-container {
 		button {
 			padding-right: 0;
+		}
+		
+		#registration-fields {
+			display: none;
+			margin-top: 6px;
+			
+			button {
+				width: 82px;
+				text-align: left;
+			}
 		}
 	}
 	
 	#tagline {
-		font-size: 48px;
+		@include unselectable;
+		
+		font-size: 52px;
 		color: #222;
 		font-variant: small-caps;
 		line-height: 42px;

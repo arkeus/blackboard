@@ -1,10 +1,24 @@
 <section id="login-box">
 	<div id="brand">blackboard</div>
-	<div id="login-form">
-		<%= text_field_tag :username, nil, placeholder: "username", autocomplete: "off", autofocus: true %>
-		<%= password_field_tag :password, nil, placeholder: "password", autocomplete: "off" %>
-		<%= button_tag :login %>
-		<%= button_tag :register %>
+	<% unless flash[:error].blank? %>
+		<div id="errors"><%= flash[:error].html_safe %></div>
+	<% end %>
+	<div id="login-form-container">
+		<%= form_tag login_path, id: "login-form" do %>
+			<%= text_field_tag :username, nil, placeholder: "username", autocomplete: "off", autofocus: true %>
+			<%= password_field_tag :password, nil, placeholder: "password", autocomplete: "off" %>
+			<%= button_tag :login, id: "login-button" %>
+			<%= button_tag :register, id: "register-button", type: "button" %>
+		<% end %>
+		<%= form_tag register_path, id: "register-form" do %>
+			<div id="registration-fields">
+				<%= hidden_field_tag :username, nil, id: "register-username" %>
+				<%= hidden_field_tag :password, nil, id: "register-password" %>
+				<%= password_field_tag :password_confirmation, nil, placeholder: "confirm pass", autocomplete: "off" %>
+				<%= text_field_tag :email, nil, placeholder: "email", autocomplete: "off" %>
+				<%= button_tag :register, value: "register", id: "register-submit-button" %>
+			</div>
+		<% end %>
 	</div>
 	<div id="tagline">in blackest night</div>
 </section>

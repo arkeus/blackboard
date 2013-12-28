@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.integer :ip, limit: 8
       t.timestamps
       
-      t.index :username
+      t.index :username, unique: true
     end
   end
 end

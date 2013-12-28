@@ -1,0 +1,56 @@
+// Micro Clearfix: http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix {
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	
+	&:after {
+		clear: both;
+	}
+	
+	*zoom: 1;
+}
+
+// Helper class for clearfix
+.cf {
+	@include clearfix;
+}
+
+// Make an element unselectable
+@mixin unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+// Helper class for unselectable
+.unselectable {
+	@include unselectable;
+}
+
+// Make an item clickable
+@mixin clickable {
+	@include unselectable;
+	cursor: pointer;
+	&:visited { color: #b93838; }
+	&:hover { color: #baa938; }
+	&:active { color: #51ba38; }
+	&:focus { outline: none; }
+}
+
+// Helper class for clickable
+.clickable {
+	@include clickable;
+}
+
+// Revert to border box sizing
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}

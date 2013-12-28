@@ -1,9 +1,35 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import "utils";
 
 html {
 	background: #000;
 	color: #fff;
 	font-family: 'Droid Sans', sans-serif;
+	
+	input, button {
+		border: 0;
+		background: transparent;
+		color: #eee;
+		font-size: 12px;
+		
+		&:hover {
+			color: #ff8000;
+		}
+		
+		&:focus {
+			outline: none;
+			color: #ff0000;
+		}
+		
+		&:active {
+			color: #00ffff;
+		}
+	}
+	
+	input {
+		border-bottom: 1px solid #aaa;
+		width: 120px;
+	}
 }
 
 // Selection Text
