@@ -6,6 +6,7 @@ class IndexController < ApplicationController
 	
 	# Action to register a new user
 	def register
+		raise "Username '#{post_params[:username]}' is taken" if User.exists?(username: post_params[:username])
 		user = User.new(post_params)
 		user.save!
 		session[:user_id] = user.id

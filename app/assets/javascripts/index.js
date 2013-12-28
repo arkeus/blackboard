@@ -1,4 +1,4 @@
-$(function() {
+Controller.ready("index", function() {
 	$("#register-button").click(function() {
 		$(this).css("visibility", "hidden");
 		$("#registration-fields").slideDown();
