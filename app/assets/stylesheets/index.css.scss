@@ -1,1 +1,52 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+#login-box {
+	text-align: center;
+	width: 600px;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin-left: -300px;
+	
+	#brand {
+		font-size: 74px;
+		color: #444;
+		font-variant: small-caps;
+		line-height: 70px;
+	}
+	
+	#login-form {
+		input, button {
+			border: 0;
+			background: transparent;
+			color: #eee;
+			
+			&:hover {
+				color: #ff8000;
+			}
+			
+			&:focus {
+				outline: none;
+				color: #ff0000;
+			}
+			
+			&:active {
+				color: #00ffff;
+			}
+		}
+		
+		input {
+			border-bottom: 1px solid #aaa;
+			width: 100px;
+		}
+		
+		button {
+			padding-right: 0;
+		}
+	}
+	
+	#tagline {
+		font-size: 48px;
+		color: #222;
+		font-variant: small-caps;
+		line-height: 42px;
+	}
+}

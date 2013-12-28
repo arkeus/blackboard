@@ -1,1 +1,10 @@
-hi
+<section id="login-box">
+	<div id="brand">blackboard</div>
+	<div id="login-form">
+		<%= text_field_tag :username, nil, placeholder: "username", autocomplete: "off", autofocus: true %>
+		<%= password_field_tag :password, nil, placeholder: "password", autocomplete: "off" %>
+		<%= button_tag :login %>
+		<%= button_tag :register %>
+	</div>
+	<div id="tagline">in blackest night</div>
+</section>

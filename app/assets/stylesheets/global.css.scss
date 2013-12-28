@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+
+html {
+	background: #000;
+	color: #fff;
+	font-family: 'Droid Sans', sans-serif;
+}
+
+::selection {
+	color: #ff0000;
+}
+
+::-moz-selection {
+	color: #ff0000;
+}
