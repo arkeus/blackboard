@@ -9,7 +9,7 @@ module WriteHelper
 		else
 			classes << "future"
 		end
-		classes << "selected" if selected_day.is?(day)
+		classes << "selected" if selected_day && selected_day.is?(day)
 		classes.join(" ")
 	end
 end

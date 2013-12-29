@@ -34,6 +34,7 @@ Controller.ready("write", function() {
 			$save = saveField;
 			$words = wordsField;
 			$goal = goalField;
+			contentValue = $content.val();
 			$content.on("keyup paste", onChange);
 			
 			updateSaveDisplay();

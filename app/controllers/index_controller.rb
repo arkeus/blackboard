@@ -1,7 +1,7 @@
 class IndexController < ApplicationController
 	# Home Page
 	def index
-		
+		redirect_to write_path if @user.logged_in?
 	end
 	
 	# Action to register a new user

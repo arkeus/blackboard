@@ -1,3 +1,5 @@
+<% content_for :title, "Write" %>
+
 <section id="write-title" class="grid">
 	<div id="document-title" data-submit-path="<%= update_title_path(@day.identifier) %>" data-submit-name="title" class="col-8"><%= @document.title[0...50] %></div>
 	<div id="document-words" class="col-4">

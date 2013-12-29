@@ -14,6 +14,10 @@
 				maxlength: 50
 			});
 			
+			var finishEditing = function() {
+				$editBox.replaceWith($element);
+			};
+			
 			$element.replaceWith($editBox);
 			$editBox.focus();
 			
@@ -24,10 +28,14 @@
 				blurred = true;
 				$editBox.prop("disabled", true);
 				
+				if ($editBox.val() === originalValue) {
+					finishEditing();
+					return;
+				}
+				
 				var data = {};
 				data[submitName] = $editBox.val();
 				
-				trace(submitPath);
 				$.ajax({
 					type: "PUT",
 					data: data,
@@ -35,11 +43,9 @@
 				}).done(function() {
 					$element.text($editBox.val());
 				}).fail(function() {
-					trace("fail");
 					// reverts to original value
 				}).always(function() {
-					trace("always");
-					$editBox.replaceWith($element);
+					finishEditing();
 				});
 			}).keydown(function(event) {
 				if (event.which == 13) {

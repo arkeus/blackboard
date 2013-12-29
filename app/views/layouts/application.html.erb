@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blackboard</title>
+  <title><%= content_for(:title) + " | " if content_for?(:title) %>Blackboard</title>
   <%= javascript_tag do -%>window.controller = "<%= params[:controller] -%>";<% end -%>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
