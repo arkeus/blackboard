@@ -1,34 +1,70 @@
 class Day
-	attr_reader :identifier
+	attr_reader :identifier, :year, :month, :day
 	
-	def initialize(identifier)
-		@identifier = identifier
+	def initialize(year, month, day)
+		@identifier = self.class.calculate_identifier(year, month, day)
+		@year = year
+		@month = month
+		@day = day
+	end
+	
+	def time
+		@time ||= Time.new(@year, @month, @day)
+	end
+	
+	def is?(time)
+		year == time.year && month == time.month && day == time.day
 	end
 	
 	def self.from_time(time = Time.now)
-		Day.new(year(time) + month(time) + day(time))
+		Day.new(time.year, time.month, time.day)
 	end
 	
 	def self.from_string(time_string)
 		from_time(Time.zone.parse(time_string))
 	end
 	
+	def self.from_identifier(identifier)
+		Day.new(decode_year(identifier[0]), decode_month(identifier[1]), decode_day(identifier[2]))
+	end
+	
+	def self.calculate_identifier(year, month, day)
+		encode_year(year) + encode_month(month) + encode_day(day)
+	end
+	
 	private
 	
-	def self.year(time)
-		shorten(time.year - 2013)
-	end
-	
-	def self.month(time)
-		shorten(time.month - 1)
-	end
-	
-	def self.day(time)
-		shorten(time.day - 1)
-	end
-	
 	TRANSLATION_TABLE = (('a'..'z').to_a + ('0'..'9').to_a + ('A'..'Z').to_a).freeze
-	def self.shorten(value)
+	
+	def self.encode_year(year)
+		encode(year - 2013)
+	end
+	
+	def self.encode_month(month)
+		encode(month - 1)
+	end
+	
+	def self.encode_day(day)
+		encode(day - 1)
+	end
+	
+	def self.decode_year(year)
+		decode(year) + 2013
+	end
+	
+	def self.decode_month(month)
+		decode(month) + 1
+	end
+	
+	def self.decode_day(day)
+		decode(day) + 1
+	end
+	
+	def self.encode(value)
 		TRANSLATION_TABLE[value]
+	end
+	
+	def self.decode(value)
+		TRANSLATION_TABLE.index(value)
 	end
 end

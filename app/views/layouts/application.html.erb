@@ -11,5 +11,7 @@
 
 <%= yield %>
 
+<%= render partial: "shared/navigation_bar" if @user.logged_in? %>
+
 </body>
 </html>

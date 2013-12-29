@@ -16,4 +16,16 @@ class DayTest < ActiveSupport::TestCase
   	assert_equal "aaa", Day.from_time(Time.new(2013, 1, 1)).identifier
   	assert_equal "el4", Day.from_time(Time.new(2017, 12, 31)).identifier
   end
+  
+  test "identifier to day" do
+  	day = Day.from_identifier("el4")
+  	assert_equal 2017, day.year
+  	assert_equal 12, day.month
+  	assert_equal 31, day.day
+  	
+  	day = Day.from_identifier("aaa")
+  	assert_equal 2013, day.year
+  	assert_equal 1, day.month
+  	assert_equal 1, day.day
+  end
 end

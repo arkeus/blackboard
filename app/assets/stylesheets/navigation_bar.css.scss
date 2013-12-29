@@ -1,0 +1,82 @@
+#navigation-bar {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	font-size: 16px;
+	font-weight: bold;
+	color: #666;
+	
+	button {
+		font-size: 16px;
+		font-weight: bold;
+		color: #444;
+		
+		&:hover {
+			color: #ff8000;
+		}
+		
+		&:active {
+			color: #f00;
+		}
+	}
+	
+	#month-bar {
+		padding: 0 8px 4px 8px;
+		
+		#calendar {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			border: 0;
+			
+			td {
+				text-align: center;
+				
+				a {
+					text-decoration: none;
+					display: block;
+					
+					&.future {
+						color: #222;
+					}
+					
+					&.past {
+						color: #666;
+					}
+					
+					&.today {
+						color: #fff;
+					}
+					
+					&.selected {
+						color: #f00;
+					}
+					
+					&:hover {
+						color: #ff8000;
+					}
+				}
+			}
+		}
+	}
+	
+	#footer-display {
+		padding: 4px 8px 2px 8px;
+		
+		#footer-left {
+			#save-display {
+				color: #444;
+				font-size: 12px;
+				padding-left: 10px;
+			}
+		}
+		
+		#footer-right {
+			text-align: right;
+			
+			#logout-form {
+				display: inline;
+			}
+		}
+	}
+}

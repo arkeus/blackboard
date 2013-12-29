@@ -6,4 +6,6 @@ Blackboard::Application.routes.draw do
   post "/register", to: "index#register", as: :register
   # Write
   get "/write(/:day)", to: "write#write", as: :write
+  put "/write/:day/update_title", to: "write#update_title", as: :update_title
+  put "/write/:day/update_content", to: "write#update_content", as: :update_content
 end

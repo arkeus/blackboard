@@ -1,3 +1,47 @@
-// Place all the styles related to the write controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "utils";
+
+#write-title {
+	padding: 4px 8px;
+	font-weight: bold;
+	
+	#document-title {
+		font-size: 22px;
+		text-align: left;
+		color: #f00;
+		cursor: pointer;
+	}
+	
+	input[type="text"] {
+		font-size: 22px;
+	}
+	
+	#document-words {
+		font-size: 16px;
+		line-height: 26px;
+		text-align: right;
+		color: #666;
+	}
+}
+
+#write-body {
+	@include border-box;
+	
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0 8px;
+	background: transparent;
+	color: #ccc;
+	border: 0;
+	resize: none;
+	font-size: 16px;
+	line-height: 22px;
+	
+	&:focus {
+		outline: none;
+		color: #fff;
+	}
+}

@@ -1,0 +1,8 @@
+<section id="write-title" class="grid">
+	<div id="document-title" data-submit-path="<%= update_title_path(@day.identifier) %>" data-submit-name="title" class="col-8"><%= @document.title[0...50] %></div>
+	<div id="document-words" class="col-4">
+		<span id="document-words-current"><%= @document.words %></span> / <span id="document-words-goal"><%= @document.goal %></span> Words
+	</div>
+</section>
+
+<textarea id="write-body" autofocus="autofocus" placeholder="Begin writing..." data-update-path="<%= update_content_path(@day.identifier) %>"><%= @document.content %></textarea>

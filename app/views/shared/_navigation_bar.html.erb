@@ -1,0 +1,26 @@
+<section id="navigation-bar">
+	<div id="footer-display" class="grid">
+		<div id="footer-left" class="col-6">
+			<span id="now-time"><%= Time.now.strftime("%A %B #{Time.now.day.ordinalize}") %></span>
+			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= Time.now.to_i %>"></span></span>
+		</div>
+		<div id="footer-right" class="col-6">
+			<span id="current-user"><%= @user.username %></span>
+			<%= form_tag logout_path, id: "logout-form" do %>
+				<%= button_tag :Logout %>
+			<% end %>
+		</div>
+	</div>
+	<nav id="month-bar">
+		<table id="calendar">
+			<tr>
+				<% month = Month.new(Time.now) %>
+				<% month.each_day do |day| %>
+					<td style="width:<%= 100.0 / month.num_days %>%">
+						<%= link_to day.day, write_path(Day.calculate_identifier(day.year, day.month, day.day)), class: day_classes(day, @day) %>
+					</td>
+				<% end %>
+			</tr>
+		</table>
+	</nav>
+</section>

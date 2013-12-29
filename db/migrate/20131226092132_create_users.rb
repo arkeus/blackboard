@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :password_digest, null: false
     	t.string :email, null: false, limit: 128
     	t.integer :ip, limit: 8
+    	t.integer :goal, null: false, default: 500
       t.timestamps
       
       t.index :username, unique: true

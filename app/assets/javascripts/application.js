@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment.min
+//= require livestamp.min
 //= require global
 //= require_tree .
