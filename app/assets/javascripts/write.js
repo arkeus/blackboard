@@ -51,6 +51,7 @@ Controller.ready("write", function() {
 			}
 			timer = setTimeout(postContent, UPDATE_DELAY);
 			updateWordDisplay();
+			$save.addClass("unsaved");
 		};
 		
 		var postContent = function() {
@@ -65,6 +66,7 @@ Controller.ready("write", function() {
 				data: { content: contentValue }
 			}).done(function() {
 				updateSaveDisplay();
+				$save.removeClass("unsaved");
 			}).fail(function() {
 				trace("fail");
 			}).always(function() {

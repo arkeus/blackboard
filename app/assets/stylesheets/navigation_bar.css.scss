@@ -65,9 +65,15 @@
 		
 		#footer-left {
 			#save-display {
+				display: none;
+				
 				color: #444;
 				font-size: 12px;
 				padding-left: 10px;
+				
+				&.unsaved {
+					color: #000;
+				}
 			}
 			
 			#now-time > a {
