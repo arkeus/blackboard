@@ -69,6 +69,14 @@
 				font-size: 12px;
 				padding-left: 10px;
 			}
+			
+			#now-time > a {
+				color: #666;
+				
+				&:hover {
+					color: #ff8000;
+				}
+			}
 		}
 		
 		#footer-right {

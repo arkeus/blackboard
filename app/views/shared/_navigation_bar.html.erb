@@ -1,8 +1,8 @@
 <section id="navigation-bar">
 	<div id="footer-display" class="grid">
 		<div id="footer-left" class="col-6">
-			<span id="now-time"><%= Time.now.strftime("%A %B #{Time.now.day.ordinalize}") %></span>
-			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= Time.now.to_i %>"></span></span>
+			<span id="now-time"><%= link_to Time.now.strftime("%A %B #{Time.now.day.ordinalize}"), write_path %></span>
+			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= @document.updated_at.to_i if @document %>"></span></span>
 		</div>
 		<div id="footer-right" class="col-6">
 			<span id="current-user"><%= @user.username %></span>

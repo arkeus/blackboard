@@ -37,7 +37,7 @@ Controller.ready("write", function() {
 			contentValue = $content.val();
 			$content.on("keyup paste", onChange);
 			
-			updateSaveDisplay();
+			//updateSaveDisplay();
 			updateWordDisplay();
 		};
 		
