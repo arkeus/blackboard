@@ -1,25 +1,32 @@
 Controller.ready("write", function() {
-	var handleResize = function() {
-		var topHeight = $("#write-title").outerHeight();
-		var bottomHeight = $("#navigation-bar").outerHeight();
-		var totalHeight = window.innerHeight;
-		var totalWidth = window.innerWidth;
+	// Resize Handler
+	(function() {
+		var handleResize = function() {
+			var topHeight = $("#write-title").outerHeight();
+			var bottomHeight = $("#navigation-bar").outerHeight();
+			var totalHeight = window.innerHeight;
+			var totalWidth = window.innerWidth;
+			
+			$("#write-body").css({
+				top: topHeight,
+				height: totalHeight - topHeight - bottomHeight,
+				width: totalWidth - 4
+			});
+		};
 		
-		$("#write-body").css({
-			top: topHeight,
-			height: totalHeight - topHeight - bottomHeight,
-			width: totalWidth - 4
+		$(window).resize(handleResize);
+		handleResize();
+	})();
+	
+	// Editable Handler
+	(function() {
+		$("#write-title").on("click", "#document-title", function() {
+			$(this).edit();
 		});
-	};
+	})();
 	
-	$(window).resize(handleResize);
-	handleResize();
-	
-	$("#write-title").on("click", "#document-title", function() {
-		$(this).edit();
-	});
-	
-	var Document = new (function() {
+	// Document
+	(function() {
 		var UPDATE_DELAY = 500; // ms
 		
 		var $content;
@@ -112,5 +119,27 @@ Controller.ready("write", function() {
 		};
 		
 		this.initialize();
+	})();
+	
+	// Nav Bar Fader
+	(function() {
+		var timer;
+		var $nav = $("#navigation-bar");
+		
+		var setFadeoutTimer = function() {
+			timer = setTimeout(function() {
+				$nav.fadeOut(2000);
+			}, 10000);
+		};
+		
+		$(window).on("mousemove", function() {
+			if (timer) {
+				clearTimeout(timer);
+			}
+			$nav.fadeIn();
+			setFadeoutTimer();
+		});
+		
+		setFadeoutTimer();
 	})();
 });
