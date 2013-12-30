@@ -48,7 +48,6 @@ Controller.ready("write", function() {
 			contentValue = $content.val();
 			$content.on("keyup paste", onChange);
 			
-			//updateSaveDisplay();
 			updateWordDisplay();
 		};
 		
@@ -77,7 +76,7 @@ Controller.ready("write", function() {
 			$.ajax({
 				url: $content.data("update-path"),
 				method: "PUT",
-				data: { content: contentValue }
+				data: { content: $content.val() }
 			}).done(function() {
 				trace("Saved");
 				updateSaveDisplay();
