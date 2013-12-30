@@ -21,7 +21,7 @@
 	}
 	
 	#month-bar {
-		padding: 0 8px 4px 8px;
+		padding: 0;
 		
 		#calendar {
 			width: 100%;
@@ -31,6 +31,8 @@
 			
 			td {
 				text-align: center;
+				border-bottom: 2px solid #f00;
+				padding-bottom: 2px;
 				
 				a {
 					text-decoration: none;

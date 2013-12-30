@@ -5,6 +5,9 @@ class WriteController < ApplicationController
 	# Write for a given day, defaulting to the current day
 	def write
 		@day = post_params[:day] ? Day.from_identifier(post_params[:day]) : Day.from_time(Time.now)
+		@docs = Document.for_user(@user.id, @day.year, @day.month)
+		@progress = Hash[*@docs.map { |doc| [Day.calculate_identifier(doc.year, doc.month, doc.day), (doc.words.to_f / doc.goal)] }.flatten]
+		puts @progress.inspect
 		@document = get_or_create_document(@user, @day)
 	end
 	

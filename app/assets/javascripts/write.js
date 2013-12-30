@@ -19,7 +19,7 @@ Controller.ready("write", function() {
 		$(this).edit();
 	});
 	
-	var Document = new (function(contentField, saveField, wordsField, goalField) {
+	var Document = new (function() {
 		var UPDATE_DELAY = 500; // ms
 		
 		var $content;
@@ -30,10 +30,13 @@ Controller.ready("write", function() {
 		var timer;
 		
 		this.initialize = function() {
-			$content = contentField;
-			$save = saveField;
-			$words = wordsField;
-			$goal = goalField;
+			$content = $("#write-body");
+			$save = $("#save-display");
+			$words = $("#document-words-current");
+			$goal = $("#document-words-goal");
+			
+			initializeCalendarBorders();
+			
 			contentValue = $content.val();
 			$content.on("keyup paste", onChange);
 			
@@ -84,8 +87,11 @@ Controller.ready("write", function() {
 			$words.text(numWords).css("color", color);
 		};
 		
-		var calculateWordColor = function (words, goal) {
-			var progress = words / goal;
+		var calculateWordColor = function(words, goal) {
+			return calculateColor(words / goal);
+		};
+		
+		var calculateColor = function(progress) {
 			if (progress > 1) {
 				progress = 1;
 			}
@@ -97,6 +103,14 @@ Controller.ready("write", function() {
 			return "#" + (redHex.length == 1 ? "0" + redHex : redHex) + (greenHex.length == 1 ? "0" + greenHex : greenHex) + blueHex;
 		};
 		
+		var initializeCalendarBorders = function() {
+			$("[data-progress]").each(function() {
+				var element = this, $element = $(element);
+				var color = calculateColor($element.data("progress"));
+				$element.css("borderColor", color);
+			});
+		};
+		
 		this.initialize();
-	})($("#write-body"), $("#save-display"), $("#document-words-current"), $("#document-words-goal"));
+	})();
 });

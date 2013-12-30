@@ -16,7 +16,7 @@
 			<tr>
 				<% month = Month.new(Time.now) %>
 				<% month.each_day do |day| %>
-					<td style="width:<%= 100.0 / month.num_days %>%">
+					<td style="width:<%= 100.0 / month.num_days %>%" data-progress="<%= @progress[day.identifier] || 0 %>">
 						<%= link_to day.day, write_path(Day.calculate_identifier(day.year, day.month, day.day)), class: day_classes(day, @day) %>
 					</td>
 				<% end %>

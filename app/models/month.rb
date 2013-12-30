@@ -10,7 +10,7 @@ class Month < ActiveRecord::Base
 	def each_day
 		day = @range.first
 		while @range.cover?(day)
-			yield(day)
+			yield(Day.from_time(day))
 			day += 1.day
 		end
 	end
