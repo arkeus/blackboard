@@ -26,8 +26,8 @@ Controller.ready("write", function() {
 	})();
 	
 	// Document
-	(function() {
-		var UPDATE_DELAY = 500; // ms
+	var Document = new (function() {
+		var UPDATE_DELAY = 5000; // ms
 		
 		var $content;
 		var $save;
@@ -35,6 +35,7 @@ Controller.ready("write", function() {
 		var $goal;
 		var contentValue;
 		var timer;
+		var saving = false;
 		
 		this.initialize = function() {
 			$content = $("#write-body");
@@ -51,6 +52,10 @@ Controller.ready("write", function() {
 			updateWordDisplay();
 		};
 		
+		this.save = function() {
+			postContent();
+		};
+		
 		var countWords = function(words) {
 			return !words ? 0 : words.match(/[^\s]+/g).length;
 		};
@@ -65,22 +70,23 @@ Controller.ready("write", function() {
 		};
 		
 		var postContent = function() {
-			if ($content.val() === contentValue) {
+			if ($content.val() === contentValue || saving) {
 				return;
 			}
-			contentValue = $content.val();
-			console.log(countWords($content.val()));
+			saving = true;
 			$.ajax({
 				url: $content.data("update-path"),
 				method: "PUT",
 				data: { content: contentValue }
 			}).done(function() {
+				trace("Saved");
 				updateSaveDisplay();
 				$save.removeClass("unsaved");
+				contentValue = $content.val();
 			}).fail(function() {
-				trace("fail");
+				trace("Failed to save");
 			}).always(function() {
-				trace("always");
+				saving = false;
 			});
 		};
 		
@@ -141,5 +147,15 @@ Controller.ready("write", function() {
 		});
 		
 		setFadeoutTimer();
+	})();
+	
+	// Capture Keybindings
+	(function() {
+		$(window).on("keydown", function(event) {
+			if (((event.which == 115 || event.which == 83) && event.ctrlKey) || event.which == 19) {
+				event.preventDefault();
+				Document.save();
+			}
+		});
 	})();
 });
