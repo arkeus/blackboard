@@ -1,7 +1,7 @@
 module WriteHelper
 	def day_classes(day, selected_day)
 		now = Time.now
-		classes = []
+		classes = ["calendar-day"]
 		if day.day == now.day
 			classes << "today"
 		elsif day.day < now.day

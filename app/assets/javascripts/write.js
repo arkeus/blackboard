@@ -76,7 +76,8 @@ Controller.ready("write", function() {
 			$.ajax({
 				url: $content.data("update-path"),
 				method: "PUT",
-				data: { content: $content.val() }
+				data: { content: $content.val() },
+				async: false
 			}).done(function() {
 				trace("Saved");
 				updateSaveDisplay();
@@ -97,6 +98,7 @@ Controller.ready("write", function() {
 			var numWords = countWords($content.val());
 			var color = calculateWordColor(numWords, parseInt($goal.text()));
 			$words.text(numWords).css("color", color);
+			$(".calendar-day.selected").parent().css("borderColor", color);
 		};
 		
 		var calculateWordColor = function(words, goal) {
@@ -148,13 +150,16 @@ Controller.ready("write", function() {
 		setFadeoutTimer();
 	})();
 	
-	// Capture Keybindings
+	// Other bindings
 	(function() {
+		// control+s
 		$(window).on("keydown", function(event) {
 			if (((event.which == 115 || event.which == 83) && event.ctrlKey) || event.which == 19) {
 				event.preventDefault();
 				Document.save();
 			}
 		});
+		// save on page leave
+		$(window).unload(Document.save);
 	})();
 });
