@@ -98,7 +98,10 @@ Controller.ready("write", function() {
 			var numWords = countWords($content.val());
 			var color = calculateWordColor(numWords, parseInt($goal.text()));
 			$words.text(numWords).css("color", color);
-			$(".calendar-day.selected").parent().css("borderColor", color);
+			$(".calendar-day.selected").css({
+				"borderColor": color,
+				"backgroundColor": color
+			});
 		};
 		
 		var calculateWordColor = function(words, goal) {
