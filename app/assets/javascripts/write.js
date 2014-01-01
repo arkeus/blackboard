@@ -139,12 +139,15 @@ Controller.ready("write", function() {
 		var setFadeoutTimer = function() {
 			timer = setTimeout(function() {
 				$nav.fadeOut(2000);
+				timer = null;
 			}, 10000);
 		};
 		
 		$(window).on("mousemove", function() {
 			if (timer) {
 				clearTimeout(timer);
+			} else {
+				$nav.stop(true, true);
 			}
 			$nav.fadeIn();
 			setFadeoutTimer();
