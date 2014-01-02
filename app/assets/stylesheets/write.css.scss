@@ -1,7 +1,7 @@
 @import "utils";
 
 #write-title {
-	padding: 4px 8px;
+	padding: 4px 8px 12px 8px;
 	font-weight: bold;
 	
 	#document-title {
@@ -26,7 +26,7 @@
 #write-body {
 	@include border-box;
 	
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -47,12 +47,13 @@
 }
 
 #navigation-bar {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 	font-size: 16px;
 	font-weight: bold;
 	color: #666;
+	padding-top: 12px;
 	
 	button {
 		font-size: 16px;

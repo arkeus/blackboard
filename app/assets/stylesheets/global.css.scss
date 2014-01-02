@@ -5,6 +5,11 @@ html {
 	background: #000;
 	color: #fff;
 	font-family: 'Droid Sans', sans-serif;
+	height: 100%;
+	
+	body {
+		height: 100%;
+	}
 	
 	input, button {
 		border: 0;
@@ -33,6 +38,13 @@ html {
 	
 	a {
 		text-decoration: none;
+	}
+	
+	main {
+		width: 800px;
+		height: 100%;
+		margin: 0 auto;
+		position: relative;
 	}
 }
 

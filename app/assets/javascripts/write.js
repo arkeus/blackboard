@@ -10,7 +10,7 @@ Controller.ready("write", function() {
 			$("#write-body").css({
 				top: topHeight,
 				height: totalHeight - topHeight - bottomHeight,
-				width: totalWidth - 4
+				//width: totalWidth - 4
 			});
 		};
 		
