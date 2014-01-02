@@ -23,13 +23,13 @@ class Day
 	
 	# Whether we can go further into the future from this day. True if <= current month
 	def futureable
-		now = Time.now
+		now = Time.zone.now
 		@year < now.year || (@year == now.year && @month < now.month)
 	end
 	
 	# Static
 	
-	def self.from_time(time = Time.now)
+	def self.from_time(time = Time.zone.now)
 		Day.new(time.year, time.month, time.day)
 	end
 	

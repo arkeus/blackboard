@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
   	end
   end
   
-  DEFAULT_TIME_ZONE = "".freeze
   def with_user_time_zone
   	Time.use_zone(@user.time_zone) { yield }
   end

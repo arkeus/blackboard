@@ -1,5 +1,5 @@
 class Month < ActiveRecord::Base
-	def initialize(time = Time.now)
+	def initialize(time = Time.zone.now)
 		@range = time.all_month
 	end
 	

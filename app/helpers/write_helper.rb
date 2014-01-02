@@ -1,6 +1,6 @@
 module WriteHelper
 	def day_classes(day, selected_day)
-		now = Time.now
+		now = Time.zone.now
 		classes = ["calendar-day"]
 		if day.day == now.day
 			classes << "today"
