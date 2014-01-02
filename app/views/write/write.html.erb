@@ -8,3 +8,30 @@
 </section>
 
 <textarea id="write-body" autofocus="autofocus" placeholder="Begin writing..." data-update-path="<%= update_content_path(@day.identifier) %>"><%= @document.content %></textarea>
+
+<section id="navigation-bar">
+	<div id="footer-display" class="grid">
+		<div id="footer-left" class="col-6">
+			<span id="now-time"><%= link_to @day.time.strftime("%A %B #{@day.time.day.ordinalize}"), write_path %></span>
+			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= @document.updated_at.to_i if @document %>"></span></span>
+		</div>
+		<div id="footer-right" class="col-6">
+			<span id="current-user"><%= @user.username %></span>
+			<%= form_tag logout_path, id: "logout-form" do %>
+				<%= button_tag :Logout %>
+			<% end %>
+		</div>
+	</div>
+	<nav id="month-bar">
+		<table id="calendar">
+			<tr>
+				<% month = Month.new(@day.time) %>
+				<% month.each_day do |day| %>
+					<%= content_tag :td, data: { progress: @progress[day.identifier] || 0 }, class: day_classes(day, @day), style: "width:#{100.0 / month.num_days}%" do %>
+						<%= link_to day.day, write_path(day.identifier) %>
+					<% end %>
+				<% end %>
+			</tr>
+		</table>
+	</nav>
+</section>
