@@ -134,6 +134,22 @@
 					color: #ff8000;
 				}
 			}
+			
+			.navigate {
+				color: #333;
+				
+				&.left-arrow {
+					padding-right: 8px;
+				}
+				
+				&.right-arrow {
+					padding-left: 8px;
+				}
+				
+				&:hover {
+					color: #999;
+				}
+			}
 		}
 		
 		#footer-right {

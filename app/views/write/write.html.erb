@@ -12,7 +12,9 @@
 <section id="navigation-bar">
 	<div id="footer-display" class="grid">
 		<div id="footer-left" class="col-6">
-			<span id="now-time"><%= link_to @day.time.strftime("%A %B #{@day.time.day.ordinalize}"), write_path %></span>
+			<%= link_to fa_icon("chevron-left"), write_path(Day.from_time((@day.time - 1.month).change(day: 1)).identifier), class: "navigate left-arrow" if @day.pastable %>
+			<span id="now-time"><%= link_to @day.time.strftime("%A %B #{@day.time.day.ordinalize} %Y"), write_path %></span>
+			<%= link_to fa_icon("chevron-right"), write_path(Day.from_time((@day.time + 1.month).change(day: 1)).identifier), class: "navigate right-arrow" if @day.futureable %>
 			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= @document.updated_at.to_i if @document %>"></span></span>
 		</div>
 		<div id="footer-right" class="col-6">

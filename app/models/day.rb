@@ -16,6 +16,19 @@ class Day
 		year == time.year && month == time.month && day == time.day
 	end
 	
+	# Whether we can go further into the past from this day. True if >= feb 2013
+	def pastable
+		time >= Time.new(2013, 2, 1)
+	end
+	
+	# Whether we can go further into the future from this day. True if <= current month
+	def futureable
+		now = Time.now
+		@year < now.year || (@year == now.year && @month < now.month)
+	end
+	
+	# Static
+	
 	def self.from_time(time = Time.now)
 		Day.new(time.year, time.month, time.day)
 	end

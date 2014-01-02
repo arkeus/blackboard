@@ -42,4 +42,9 @@ class ApplicationController < ActionController::Base
   		render json: { error: e.message }, status: 422
   	end
   end
+  
+  DEFAULT_TIME_ZONE = "".freeze
+  def with_user_time_zone
+  	Time.use_zone(@user.time_zone) { yield }
+  end
 end

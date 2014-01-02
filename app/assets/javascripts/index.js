@@ -9,4 +9,6 @@ Controller.ready("index", function() {
 		$("#register-username").val($("#username").val());
 		$("#register-password").val($("#password").val());
 	});
+	
+	$("#register-time-zone").val(jstz.determine().name());
 });

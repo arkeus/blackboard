@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :email, null: false, limit: 128
     	t.integer :ip, limit: 8
     	t.integer :goal, null: false, default: 500
+    	t.string :time_zone, null: false, default: "Pacific Time (US & Canada)"
       t.timestamps
       
       t.index :username, unique: true

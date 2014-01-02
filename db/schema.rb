@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 20131229033635) do
   add_index "documents", ["user_id", "year", "month", "day"], name: "index_documents_on_user_id_and_year_and_month_and_day"
 
   create_table "users", force: true do |t|
-    t.string   "username",        limit: 24,                null: false
-    t.string   "password_digest",                           null: false
-    t.string   "email",           limit: 128,               null: false
+    t.string   "username",        limit: 24,                                         null: false
+    t.string   "password_digest",                                                    null: false
+    t.string   "email",           limit: 128,                                        null: false
     t.integer  "ip",              limit: 8
-    t.integer  "goal",                        default: 500, null: false
+    t.integer  "goal",                        default: 500,                          null: false
+    t.string   "time_zone",                   default: "Pacific Time (US & Canada)", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

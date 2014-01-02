@@ -1,6 +1,7 @@
 class WriteController < ApplicationController
 	before_action :require_login
 	around_action :render_errors, only: [:update_title, :update_content]
+	around_action :with_user_time_zone
 	
 	# Write for a given day, defaulting to the current day
 	def write

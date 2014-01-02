@@ -12,6 +12,7 @@
 		<% end %>
 		<%= form_tag register_path, id: "register-form" do %>
 			<div id="registration-fields">
+				<%= hidden_field_tag :time_zone, nil, id: "register-time-zone" %>
 				<%= hidden_field_tag :username, nil, id: "register-username" %>
 				<%= hidden_field_tag :password, nil, id: "register-password" %>
 				<%= password_field_tag :password_confirmation, nil, placeholder: "confirm pass", autocomplete: "off" %>

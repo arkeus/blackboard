@@ -36,6 +36,6 @@ class IndexController < ApplicationController
 	private
 	
 	def post_params
-		@post_params ||= params.permit(:username, :password, :password_confirmation, :email)
+		@post_params ||= params.permit(:username, :password, :password_confirmation, :email, :time_zone)
 	end
 end
