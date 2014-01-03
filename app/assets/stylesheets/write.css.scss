@@ -113,7 +113,7 @@
 	}
 	
 	#footer-display {
-		padding: 4px 8px 0 8px;
+		padding: 4px 4px 0 4px;
 		
 		#footer-left {
 			#save-display {
@@ -158,6 +158,10 @@
 			
 			#logout-form {
 				display: inline;
+				
+				button {
+					padding-right: 0;
+				}
 			}
 		}
 	}
