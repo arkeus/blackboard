@@ -8,4 +8,7 @@ Blackboard::Application.routes.draw do
   get "/write(/:day)", to: "write#write", as: :write
   put "/write/:day/update_title", to: "write#update_title", as: :update_title
   put "/write/:day/update_content", to: "write#update_content", as: :update_content
+  get "/write/share/:day", to: "write#share", as: :share_document
+  # Share
+  get "/share/:user_id/:day", to: "share#share", as: :shared
 end

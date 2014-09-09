@@ -16,6 +16,7 @@
 			<span id="now-time"><%= link_to @day.time.strftime("%A %B #{@day.time.day.ordinalize} %Y"), write_path %></span>
 			<%= link_to fa_icon("chevron-right"), write_path(Day.from_time((@day.time + 1.month).change(day: 1)).identifier), class: "navigate right-arrow" if @day.futureable %>
 			<span id="save-display">Saved <span class="timestamp" data-livestamp="<%= @document.updated_at.to_i if @document %>"></span></span>
+			<span id="share-display"><%= link_to @document.shared ? "Unshare" : "Share", share_document_path(@day.identifier) %></span>
 		</div>
 		<div id="footer-right" class="col-6">
 			<span id="current-user"><%= @user.username %></span>

@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229033635) do
+ActiveRecord::Schema.define(version: 20140909062745) do
 
   create_table "documents", force: true do |t|
-    t.integer  "user_id",                null: false
-    t.string   "title",                  null: false
+    t.integer  "user_id",                    null: false
+    t.string   "title",                      null: false
     t.text     "content"
-    t.integer  "words",      default: 0, null: false
-    t.integer  "goal",                   null: false
+    t.integer  "words",      default: 0,     null: false
+    t.integer  "goal",                       null: false
     t.integer  "year"
     t.integer  "month"
     t.integer  "day"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "shared",     default: false
   end
 
   add_index "documents", ["user_id", "year", "month", "day"], name: "index_documents_on_user_id_and_year_and_month_and_day"

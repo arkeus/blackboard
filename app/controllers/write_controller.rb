@@ -32,6 +32,20 @@ class WriteController < ApplicationController
 		render_ok
 	end
 	
+	# Toggles shareability for a single document
+	def share
+		day = Day.from_identifier(post_params[:day])
+		document = Document.for_user(@user.id, day.year, day.month, day.day).first
+		raise "Unknown document" unless document
+		document.shared = !document.shared
+		document.save!
+		if document.shared
+			redirect_to shared_path(@user.id, post_params[:day])
+		else
+			redirect_to write_path(post_params[:day])
+		end
+	end
+	
 	private
 	
 	def get_or_create_document(user, day)

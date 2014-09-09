@@ -115,6 +115,10 @@
 	#footer-display {
 		padding: 4px 4px 0 4px;
 		
+		&.padded {
+			padding-bottom: 4px;
+		}
+		
 		#footer-left {
 			#save-display {
 				display: none;
@@ -149,6 +153,19 @@
 				
 				&:hover {
 					color: #999;
+				}
+			}
+			
+			#share-display {
+				padding-left: 20px;
+				font-size: 14px;
+				
+				a {
+					color: #666;
+					
+					&:hover {
+						color: #ff8000;
+					}
 				}
 			}
 		}

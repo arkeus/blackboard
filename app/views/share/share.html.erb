@@ -1,0 +1,21 @@
+<% content_for :title, "Write" %>
+
+<section id="write-title" class="grid">
+	<div id="document-title" data-submit-path="<%= update_title_path(@day.identifier) %>" data-submit-name="title" class="col-8"><%= @document.title[0...50] %></div>
+	<div id="document-words" class="col-4">
+		<span id="document-words-current" data-goal="<%= @document.goal %>"><%= @document.words %></span></span> Words
+	</div>
+</section>
+
+<textarea id="write-body" autofocus="autofocus" placeholder="No data" readonly><%= @document.content %></textarea>
+
+<section id="navigation-bar">
+	<div id="footer-display" class="grid padded">
+		<div id="footer-left" class="col-6">
+			<span id="now-time"><%= @day.time.strftime("%A %B #{@day.time.day.ordinalize} %Y") %></span>
+		</div>
+		<div id="footer-right" class="col-6">
+			<span id="current-user"><%= @share_user.username %></span>
+		</div>
+	</div>
+</section>
