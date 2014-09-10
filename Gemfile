@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # JS runtime
 gem 'therubyracer', platforms: :ruby
+gem 'libv8', '3.16.14.3'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
